@@ -1,0 +1,390 @@
+@import "tailwindcss";
+
+/* ============================================================
+   AKI 웹진 — 글로벌 스타일 시스템
+   컬러: 아이보리 + 차콜 + 딥 그린
+   ============================================================ */
+
+:root {
+  /* Core Colors */
+  --ivory:       #F7F5F0;
+  --ivory-dark:  #EDE9E1;
+  --ivory-mid:   #F2EFE8;
+  --charcoal:    #2C2C2C;
+  --charcoal-mid:#4A4A4A;
+  --charcoal-light:#6B6B6B;
+  --deep-green:  #2D5016;
+  --deep-green-mid: #3A6B1E;
+  --deep-green-light: #4D8A26;
+  --deep-green-pale: #EEF4E8;
+
+  /* Background / Text */
+  --bg-primary:  #F7F5F0;
+  --bg-secondary:#EDE9E1;
+  --bg-card:     #FDFCF9;
+  --text-primary:#2C2C2C;
+  --text-secondary:#4A4A4A;
+  --text-muted:  #6B6B6B;
+  --text-light:  #9B9B9B;
+  --border-light:#D8D4CC;
+  --border-mid:  #C4BFB5;
+
+  /* Typography */
+  --font-sans:   'IBM Plex Sans KR', 'Noto Sans KR', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-mono:   'IBM Plex Mono', 'Courier New', monospace;
+  --font-serif:  'Noto Serif KR', Georgia, serif;
+}
+
+/* ============================================================
+   기본 리셋 & 박스 모델
+   ============================================================ */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  line-height: 1.7;
+  min-height: 100vh;
+}
+
+/* ============================================================
+   링크
+   ============================================================ */
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* ============================================================
+   타이포그래피 유틸리티
+   ============================================================ */
+.text-aki-muted { color: var(--text-muted); }
+.text-aki-secondary { color: var(--text-secondary); }
+.text-aki-green { color: var(--deep-green); }
+.text-aki-light { color: var(--text-light); }
+.bg-aki { background-color: var(--bg-primary); }
+.bg-aki-secondary { background-color: var(--bg-secondary); }
+.bg-aki-card { background-color: var(--bg-card); }
+.border-aki { border-color: var(--border-light); }
+.border-aki-mid { border-color: var(--border-mid); }
+
+/* ============================================================
+   섹션 구분선
+   ============================================================ */
+.aki-divider {
+  border: none;
+  border-top: 1px solid var(--border-light);
+  margin: 2rem 0;
+}
+
+/* ============================================================
+   태그 스타일
+   ============================================================ */
+.aki-tag {
+  display: inline-block;
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 0.2rem 0.55rem;
+  border: 1px solid var(--border-light);
+  border-radius: 2px;
+  color: var(--text-muted);
+  background: transparent;
+  transition: all 0.15s ease;
+  cursor: pointer;
+}
+
+.aki-tag:hover,
+.aki-tag.active {
+  border-color: var(--deep-green);
+  color: var(--deep-green);
+  background-color: var(--deep-green-pale);
+}
+
+/* ============================================================
+   카테고리 뱃지
+   ============================================================ */
+.aki-badge {
+  display: inline-block;
+  font-size: 0.65rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 0.15rem 0.5rem;
+  border-radius: 2px;
+}
+
+.aki-badge-prompt {
+  background-color: var(--charcoal);
+  color: var(--ivory);
+}
+
+.aki-badge-text {
+  background-color: var(--deep-green);
+  color: var(--ivory);
+}
+
+.aki-badge-people {
+  background-color: var(--ivory-dark);
+  color: var(--charcoal);
+  border: 1px solid var(--border-mid);
+}
+
+.aki-badge-vault {
+  background-color: var(--deep-green-pale);
+  color: var(--deep-green);
+  border: 1px solid var(--deep-green-light);
+}
+
+/* ============================================================
+   카드 컴포넌트
+   ============================================================ */
+.aki-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-light);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.aki-card:hover {
+  border-color: var(--border-mid);
+  box-shadow: 0 2px 12px rgba(44,44,44,0.07);
+}
+
+/* ============================================================
+   리스트 아이템
+   ============================================================ */
+.aki-list-item {
+  border-bottom: 1px solid var(--border-light);
+  transition: background-color 0.15s ease;
+}
+
+.aki-list-item:hover {
+  background-color: var(--ivory-mid);
+}
+
+/* ============================================================
+   본문 산문 스타일 (Prose)
+   ============================================================ */
+.aki-prose {
+  font-size: 1rem;
+  line-height: 1.85;
+  color: var(--text-primary);
+}
+
+.aki-prose h2 {
+  font-size: 1.15rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  margin: 2.5rem 0 0.8rem;
+  color: var(--charcoal);
+  padding-bottom: 0.4rem;
+  border-bottom: 1px solid var(--border-light);
+}
+
+.aki-prose h3 {
+  font-size: 1rem;
+  font-weight: 600;
+  margin: 2rem 0 0.6rem;
+  color: var(--charcoal);
+}
+
+.aki-prose p {
+  margin-bottom: 1.4rem;
+}
+
+.aki-prose strong {
+  font-weight: 600;
+  color: var(--charcoal);
+}
+
+.aki-prose em {
+  font-style: italic;
+  color: var(--text-secondary);
+}
+
+.aki-prose blockquote {
+  border-left: 3px solid var(--deep-green);
+  padding-left: 1.25rem;
+  margin: 2rem 0;
+  color: var(--text-secondary);
+  font-style: italic;
+  font-size: 1.05rem;
+}
+
+.aki-prose ul, .aki-prose ol {
+  padding-left: 1.5rem;
+  margin-bottom: 1.4rem;
+}
+
+.aki-prose li {
+  margin-bottom: 0.4rem;
+}
+
+.aki-prose a {
+  color: var(--deep-green);
+  border-bottom: 1px solid var(--deep-green-light);
+  transition: border-color 0.15s;
+}
+
+.aki-prose a:hover {
+  border-bottom-color: var(--deep-green);
+}
+
+.aki-prose code {
+  font-family: var(--font-mono);
+  font-size: 0.875em;
+  background: var(--ivory-dark);
+  padding: 0.1em 0.4em;
+  border-radius: 2px;
+}
+
+.aki-prose pre {
+  font-family: var(--font-mono);
+  font-size: 0.875rem;
+  background: var(--charcoal);
+  color: var(--ivory);
+  padding: 1.25rem;
+  overflow-x: auto;
+  margin: 1.5rem 0;
+  border-radius: 2px;
+}
+
+.aki-prose hr {
+  border: none;
+  border-top: 1px solid var(--border-light);
+  margin: 2.5rem 0;
+}
+
+/* ============================================================
+   버튼
+   ============================================================ */
+.aki-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.8rem;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  padding: 0.5rem 1rem;
+  border: 1px solid var(--border-mid);
+  background: transparent;
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: all 0.15s ease;
+  border-radius: 2px;
+}
+
+.aki-btn:hover {
+  border-color: var(--deep-green);
+  color: var(--deep-green);
+  background: var(--deep-green-pale);
+}
+
+.aki-btn-primary {
+  background: var(--charcoal);
+  color: var(--ivory);
+  border-color: var(--charcoal);
+}
+
+.aki-btn-primary:hover {
+  background: var(--deep-green);
+  border-color: var(--deep-green);
+  color: var(--ivory);
+}
+
+/* ============================================================
+   스크롤바
+   ============================================================ */
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: var(--bg-secondary); }
+::-webkit-scrollbar-thumb { background: var(--border-mid); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: var(--charcoal-light); }
+
+/* ============================================================
+   셀렉션
+   ============================================================ */
+::selection {
+  background-color: var(--deep-green-pale);
+  color: var(--deep-green);
+}
+
+/* ============================================================
+   포커스 스타일 (접근성)
+   ============================================================ */
+:focus-visible {
+  outline: 2px solid var(--deep-green);
+  outline-offset: 2px;
+}
+
+/* ============================================================
+   반응형 유틸리티
+   ============================================================ */
+.aki-container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 1.25rem;
+}
+
+@media (min-width: 640px) {
+  .aki-container {
+    padding: 0 2rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .aki-container {
+    padding: 0 2.5rem;
+  }
+}
+
+/* ============================================================
+   페이드인 애니메이션
+   ============================================================ */
+@keyframes aki-fadein {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.aki-fadein {
+  animation: aki-fadein 0.4s ease forwards;
+}
+
+/* ============================================================
+   그리드 레이아웃
+   ============================================================ */
+.aki-grid-2 {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.25rem;
+}
+
+@media (min-width: 768px) {
+  .aki-grid-2 { grid-template-columns: repeat(2, 1fr); }
+}
+
+.aki-grid-3 {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.25rem;
+}
+
+@media (min-width: 640px) {
+  .aki-grid-3 { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (min-width: 1024px) {
+  .aki-grid-3 { grid-template-columns: repeat(3, 1fr); }
+}
